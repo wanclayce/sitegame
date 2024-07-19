@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,7 +9,7 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +18,7 @@ body {
 
 .container {
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
 }
@@ -46,9 +47,11 @@ body {
 }
 
 .form-header {
+    width: 100%;
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .login-button {
@@ -81,7 +84,6 @@ body {
     height: 0.3rem;
     background-color: #6c63ff;
     margin: 0 auto;
-    position: absolute;
     border-radius: 10px;
 }
 
@@ -90,12 +92,14 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
+    width: 100%;
 }
 
 .input-box {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
+    width: 48%;
 }
 
 .input-box input {
@@ -130,7 +134,8 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 0.62rem;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
+    width: 100%;
 }
 
 .gender-input {
@@ -146,6 +151,10 @@ body {
     font-size: 0.81rem;
     font-weight: 600;
     color: #000000c0;
+}
+
+.continue-button {
+    width: 100%;
 }
 
 .continue-button button {
@@ -170,40 +179,91 @@ body {
 }
 
 @media screen and (max-width: 1330px) {
-.form-image {
-    display: none;
-}
-.container {
-    width: 50%;
-}
-.form {
-    width: 100%;
-}
+    .form-image {
+        display: none;
+    }
+    .container {
+        width: 50%;
+    }
+    .form {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1064px) {
-.container {
-    width: 90%;
-    height: auto;
+    .container {
+        width: 90%;
+        min-height: auto;
+    }
+    .input-group {
+        flex-direction: column;
+        padding-right: 5rem;
+        max-height: 10rem;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+    }
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+    .gender-group {
+        flex-direction: column;
+    }
+    .gender-title h6 {
+        margin: 0;
+    }
+    .gender-input {
+        margin-top: 0.5rem;
+    }
 }
-.input-group {
-    flex-direction: column;
-    z-index: 5;
-    padding-right: 5rem;
-    max-height: 10rem;
-    overflow-y: scroll;
-    flex-wrap: nowrap;
-}
-.gender-inputs {
-    margin-top: 2rem;
-}
-.gender-group {
-    flex-direction: column;
-}
-.gender-title h6 {
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
     margin: 0;
 }
-.gender-input {
-    margin-top: 0.5rem;
+
+.carousel {
+    perspective: 1000px;
+    width: 400px;
+    height: 400px;
+    position: relative;
 }
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    transform-origin: center;
+    backface-visibility: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.carousel-item img {
+    width: 80%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }

@@ -62,12 +62,20 @@ section {
 }
 
 .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        border-radius: 5px;
+        transition: transform 0.3s, background-color 0.3s;
+}
+.button:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
 }
 
 .images-container {
@@ -96,9 +104,139 @@ footer {
     bottom: 0;
     width: 100%;
 }
+#sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #1572cf;
+        color: #fff;
+        transition: all 0.3s;
+}
+#sidebar .list-group {
+        border: none;
+}
+#sidebar .list-group-item {
+        background: #1572cf;
+        color: #fff;
+        border: none;
+}
+#sidebar .list-group-item:hover {
+        background: #495057;
+}
+#content {
+        flex: 1;
+        padding: 20px;
+}
+#sidebar.active {
+        margin-left: -250px;
+}
+.btn-primary {
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+        z-index: 0;
+}
+
+.btn-primary:hover::before {
+        transform: scaleX(1);
+}
+
+.btn-primary:hover {
+        background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+        transform: scale(1.1); /* Aumenta o tamanho do botão */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+}
+
+.btn-primary {
+        color: white; /* Cor do texto */
+        background-color: #007bff; /* Cor de fundo inicial */
+        border: none; /* Remove a borda padrão */
+        padding: 10px 20px; /* Padding */
+        border-radius: 5px; /* Borda arredondada */
+        font-size: 16px; /* Tamanho da fonte */
+        text-align: center; /* Alinha o texto */
+        text-decoration: none; /* Remove o sublinhado */
+        display: inline-block; /* Faz com que o botão se comporte como um bloco em linha */
+        position: relative; /* Necessário para o pseudo-elemento ::before */
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transições suaves */
+}
+
+body.carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #333;
+            margin: 0;
+        }
+.carousel {
+        position: center;
+        width: 300px;
+        height: 300px;
+        transform-style: preserve-3d;
+        animation: rotate 10s infinite linear;
+}
+.carousel img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        border: 5px solid #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+}
+    to {
+        transform: rotateY(360deg);
+        }
+}
     </style>
 </head>
 <body>
+
+    <div id="sidebar" class="bg-dark">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-dark">Home</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark">About</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark">Services</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark">Contact</a>
+        </div>
+    </div>
+    
+    <div id="content">
+        <button id="sidebarToggle" class="btn btn-primary">Toggle Sidebar</button>
+        <h1>Conteúdo Principal</h1>
+        <p>Este é o conteúdo principal da página.</p>
+    </div>
+    
+    <!-- jQuery, Popper.js e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
+
+
+
     <header>
         <img src="miku.jpg" alt="Logotipo">
         <p>Jogos também são para mulheres</p>
@@ -120,6 +258,27 @@ footer {
             <p>Bem-vindos a um espaço onde a diversidade é a protagonista, e os jogos são o cenário para celebrar as vozes e conquistas das mulheres. "Empoderando Mulheres: Um Universo de Jogos à Descoberta" é mais do que um título, é um convite para explorar narrativas cativantes que quebram barreiras e desafiam estereótipos.</p>
             <p>Conhecendo as Protagonistas: Histórias de Mulheres nos Jogos, mergulhamos fundo nas trajetórias únicas das mulheres que moldam a indústria dos games. Elas não são apenas personagens; são líderes, desenvolvedoras, e visionárias que desbravam territórios e inspiram gerações.</p>
         </section>
+
+
+        <div class="container">
+            <div class="card" style="width: 18rem;">
+                <img src="eed39a6096f103d627e3a8eb85dedb5e.jpg" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                    <h5 class="card-title">Jogos para Garotas</h5>
+                    <p class="card-text">Explore um mundo divertido e colorido com nossos jogos especialmente feitos para meninas! Vista suas personagens favoritas, decore ambientes e divirta-se com aventuras encantadoras.</p>
+                    <a href="#" class="btn btn-primary">Jogar agora</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jQuery, Popper.js e Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
         <section id="contato">
             <h1 class="highlighted-title">Entre em Contato Conosco</h1>
             <p>Estamos aqui para responder às suas perguntas e ouvir suas sugestões. Use o formulário abaixo para entrar em contato:</p>
@@ -135,11 +294,6 @@ footer {
                                         <div class="title">
                                             <h1>cadastre-se</h1>
                                         </div>
-
-                                        <div class="login-button">
-                                            <button><a href="#">entrar</a></button>
-                                        </div>
-                                    </div>
                                     <div class="input-group">
                                         <div class="input-box">
                                             <label for="firstname">Primeiro nome</label>
@@ -250,17 +404,21 @@ footer {
             </div>
         </div>
     </section>
+    
+    <div class="carousel">
+        <img src="043c11d882e66bdceae390d36cb92cb1.jpg" alt="Slide 1" style="transform: rotateY(0deg) translateZ(150px);">
+        <img src="8368b408588beee0d2257ec74ad36bf6.jpg" alt="Slide 2" style="transform: rotateY(72deg) translateZ(150px);">
+        <img src="bef5a3d4beafc1c1ca7b5f62f38bf820.jpg" alt="Slide 3" style="transform: rotateY(144deg) translateZ(150px);">
+        <img src="cdf4fcae042e8e823cea5743591bbef2.jpg" alt="Slide 4" style="transform: rotateY(216deg) translateZ(150px);">
+        <img src="F587PFnbYAAhSxo.jpg" alt="Slide 5" style="transform: rotateY(288deg) translateZ(150px);">
+    </div>
 
     <section>
         <iframe src="https://www.youtube.com/embed/FXBijyrpVAM"></iframe>
     </section>
-
     <section>
         <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d31873.478280538926!2d-60.00251130877941!3d-3.0451079535592793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x926c1a348330b461%3A0xe53e251fb35db178!2sManaus%20-%20AM%2C%2069094!3m2!1d-3.0471321!2d-59.9825933!5e0!3m2!1spt-BR!2sbr!4v1701098015858!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
     </section>
-
-    <section>
-
     <footer>
         <p>Criado por Lara Thaline</p>
     </footer>
